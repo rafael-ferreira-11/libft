@@ -49,7 +49,7 @@ char	**ft_split(char const *s, char c)
 	ret = malloc((ft_count(s, c) + 1) * sizeof(char *));
 	if (!ret)
 		return (0);
-	index = 0;
+	index = -1;
 	items = 0;
 	start = -1;
 	while (index++ <= ft_strlen(s))
