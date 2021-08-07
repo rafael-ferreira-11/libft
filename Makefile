@@ -29,7 +29,4 @@ fclean: 	clean
 re:			fclean all
 bonus:		$(OBJ) $(BONUS_OBJ)
 	@ar -rv $(NAME) $(OBJ) $(BONUS_OBJ)
-so:
-	$(CC) -nostartfiles -fPIC $(FLAGS) $(DOT_C)
-	gcc -nostartfiles -shared -o libft.so $(OBJ)
 .PHONY:		all clean fclean re bonus
