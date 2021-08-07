@@ -9,12 +9,13 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	if (!res)
 		return (0);
 	index = 0;
-	while (index < (len))
+	while (index < len)
 	{
 		if (!s[start + index])
 			break ;
 		res[index] = s[start + index];
 		index++;
 	}
+	res[index] = 0;
 	return (res);
 }
