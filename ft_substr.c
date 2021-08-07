@@ -12,7 +12,10 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	while (index < len && start < ft_strlen(s))
 	{
 		if (!s[start + index])
+		{
+			index++;
 			break ;
+		}
 		res[index] = s[start + index];
 		index++;
 	}
