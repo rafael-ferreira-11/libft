@@ -9,7 +9,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	if (!res || !s)
 		return (0);
 	index = 0;
-	while (index < len && start < ft_strlen(s))
+	while (index < len && start < ft_strlen(s) && start + index < ft_strlen(s))
 	{
 		if (!s[start + index])
 		{
