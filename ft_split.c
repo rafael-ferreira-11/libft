@@ -27,6 +27,8 @@ static char	*ft_copy(const char *str, int start, int finish)
 
 	index = 0;
 	ret = malloc((finish - start + 1));
+	if (!ret)
+		return (0);
 	while (start < finish)
 	{
 		ret[index] = str[start];
