@@ -40,8 +40,8 @@ static char	*ft_copy(const char *str, int start, int finish)
 char	**ft_split(char const *s, char c)
 {
 	int		start;
-	int		index;
-	int		items;
+	size_t	index;
+	size_t	items;
 	char	**ret;
 
 	ret = malloc((ft_count(s, c) + 1) * sizeof(char *));
@@ -50,11 +50,11 @@ char	**ft_split(char const *s, char c)
 	index = 0;
 	items = 0;
 	start = -1;
-	while (index <= (int)ft_strlen(s))
+	while (index <= ft_strlen(s))
 	{
 		if (s[index] != c && start < 0)
 			start = index;
-		else if ((s[index] == c || index == (int)ft_strlen(s)) && start >= 0)
+		else if ((s[index] == c || index == ft_strlen(s)) && start >= 0)
 		{
 			ret[items] = ft_copy(s, start, index);
 			items++;
