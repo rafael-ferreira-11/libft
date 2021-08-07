@@ -5,6 +5,8 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	char	*ret;
 	int		index;
 
+	if (!s || !f)
+		return (0);
 	ret = (char *)malloc(ft_strlen(s) + 1);
 	if (!ret)
 		return (0);
