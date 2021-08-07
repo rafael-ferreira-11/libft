@@ -6,10 +6,10 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	size_t	index;
 
 	res = (char *)malloc(len + 1);
-	if (!res)
+	if (!res || !s)
 		return (0);
 	index = 0;
-	while (index < len && s[start + index])
+	while (index < len && start < ft_strlen(s))
 	{
 		if (!s[start + index])
 			break ;
