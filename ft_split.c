@@ -58,8 +58,7 @@ char	**ft_split(char const *s, char c)
 			start = index;
 		else if ((s[index] == c || index == ft_strlen(s)) && start >= 0)
 		{
-			ret[items] = ft_copy(s, start, index);
-			items++;
+			ret[items++] = ft_copy(s, start, index);
 			start = -1;
 		}
 		index++;
