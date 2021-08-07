@@ -9,7 +9,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	if (!res)
 		return (0);
 	index = 0;
-	while (index < len)
+	while (index < len && s[start + index])
 	{
 		if (!s[start + index])
 			break ;
@@ -19,3 +19,4 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	res[index] = 0;
 	return (res);
 }
+ 
