@@ -52,7 +52,7 @@ char	**ft_split(char const *s, char c)
 	index = -1;
 	items = 0;
 	start = -1;
-	while (index++ <= ft_strlen(s))
+	while (++index <= ft_strlen(s))
 	{
 		if (s[index] != c && start < 0)
 			start = index;
