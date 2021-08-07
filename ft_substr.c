@@ -18,6 +18,6 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		res[index] = s[start + index];
 		index++;
 	}
-	res[index] = 0;
+	res[index] = '\0';
 	return (res);
 }
