@@ -7,9 +7,9 @@ char	*ft_strrchr(const char *s, int c)
 	end = s;
 	while (*end)
 		end++;
-	while (*end != *s && *end != c)
+	while (*end != *s && *end != (char)c)
 		end--;
-	if (*end == c)
+	if (*end == (char)c)
 		return ((char *)(end));
 	return (0);
 }
