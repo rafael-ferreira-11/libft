@@ -9,7 +9,6 @@ void	*ft_calloc(size_t num, size_t size)
 	res = malloc(num * size);
 	if (!res)
 		return (0);
-	while (index < size)
-		((char *)res)[index++] = 0;
+	ft_memset(res, 0, num * size);
 	return (res);
 }
