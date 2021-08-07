@@ -5,7 +5,7 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 	t_list	*retorno;
 	t_list	*temp;
 
-	if (!f || !del)
+	if (!lst || !f || !del)
 		return (0);
 	retorno = 0;
 	while (lst)
