@@ -8,7 +8,7 @@ char	*ft_strdup(const char *s)
 
 	size = ft_strlen(s);
 	index = 0;
-	res = (char *)malloc((size) * sizeof(char));
+	res = (char *)malloc((size + 1) * sizeof(char));
 	if (!res)
 		return (0);
 	while (s[index])
@@ -16,5 +16,6 @@ char	*ft_strdup(const char *s)
 		res[index] = s[index];
 		index++;
 	}
+	res[index] = 0;
 	return (res);
 }
