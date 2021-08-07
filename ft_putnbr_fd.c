@@ -15,5 +15,5 @@ void	ft_putnbr_fd(int n, int fd)
 	{
 		ft_putnbr_fd((numero / 10), fd);
 	}
-	ft_putchar_fd((numero % 10), fd);
+	ft_putchar_fd((char)(numero % 10 + 48), fd);
 }
