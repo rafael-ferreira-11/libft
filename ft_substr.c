@@ -6,7 +6,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	size_t	index;
 
 	if (!s)
-		return (NULL);
+		return (0);
 	if ((size_t)start > ft_strlen(s))
 		return (ft_strdup(""));
 	res = (char *)malloc(len + 1);
