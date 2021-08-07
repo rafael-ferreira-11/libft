@@ -20,5 +20,7 @@ int	ft_atoi(const char *nptr)
 		nbr = (nbr * 10) + (*nptr - 48);
 		nptr++;
 	}
+	if (nbr == -1)
+		return (0);
 	return (nbr * signal);
 }
