@@ -9,7 +9,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		return (0);
 	if ((size_t)start > ft_strlen(s))
 		return (ft_strdup(""));
-	res = (char *)malloc(len + 1);
+	res = malloc(len + 1);
 	if (!res)
 		return (0);
 	index = 0;
@@ -18,6 +18,6 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		res[index] = s[start + index];
 		index++;
 	}
-	res[index] = '\0';
+	res[index] = 0;
 	return (res);
 }
