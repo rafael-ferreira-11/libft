@@ -50,11 +50,11 @@ char	**ft_split(char const *s, char c)
 	index = 0;
 	items = 0;
 	start = -1;
-	while (index <= ft_strlen(s))
+	while (index <= (int)ft_strlen(s))
 	{
 		if (s[index] != c && start < 0)
 			start = index;
-		else if ((s[index] == c || index == ft_strlen(s)) && start >= 0)
+		else if ((s[index] == c || index == (int)ft_strlen(s)) && start >= 0)
 		{
 			ret[items] = ft_copy(s, start, index);
 			items++;
