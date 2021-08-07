@@ -40,11 +40,13 @@ static char	*ft_copy(const char *str, int start, int finish)
 char	**ft_split(char const *s, char c)
 {
 	int		start;
-	size_t	index;
-	size_t	items;
+	int		index;
+	int		items;
 	char	**ret;
 
 	ret = malloc((ft_count(s, c) + 1) * sizeof(char *));
+	if (!ret)
+		return (0);
 	index = 0;
 	items = 0;
 	start = -1;
