@@ -2,20 +2,23 @@
 
 static	int	ft_count(const char *str, char c)
 {
-	int	i;
+	int	index;
 	int	count;
+	int	sep;
 
-	i = 0;
-	count = 1;
-	while (str[i])
+	count = 0;
+	sep = 0;
+	index = 0;
+	while (str[index])
 	{
-		if (str[i] == c)
+		if (str[index] != c && sep == 0)
 		{
-			i += 2;
-			count++;
+			sep = 1;
+			index++;
 		}
-		else
-			i++;
+		else if (str[index] == c)
+			sep = 0;
+		index++;
 	}
 	return (count);
 }
