@@ -16,7 +16,8 @@ static	int	ft_count(const char *str, char c)
 			sep = 1;
 			count++;
 			index++;
-		} else if (str[index] == c)
+		}
+		else if (str[index] == c)
 			sep = 0;
 		index++;
 	}
@@ -40,11 +41,21 @@ static char	*ft_copy(const char *str, int start, int finish)
 	return (ret);
 }
 
+int	str_len(const char *s)
+{
+	int	length;
+
+	length = 0;
+	while (*(s++) != '\0')
+		length++;
+	return (length);
+}
+
 char	**ft_split(char const *s, char c)
 {
 	int		start;
-	size_t	index;
-	size_t	items;
+	int		index;
+	int		items;
 	char	**ret;
 
 	if (!s)
@@ -55,11 +66,11 @@ char	**ft_split(char const *s, char c)
 	index = -1;
 	items = 0;
 	start = -1;
-	while (++index <= ft_strlen(s))
+	while (++index <= str_len(s))
 	{
 		if (s[index] != c && start < 0)
 			start = index;
-		else if ((s[index] == c || index == ft_strlen(s)) && start >= 0)
+		else if ((s[index] == c || index == str_len(s)) && start >= 0)
 		{
 			ret[items++] = ft_copy(s, start, index);
 			start = -1;
