@@ -2,18 +2,24 @@
 
 static	int	ft_count(const char *str, char c)
 {
-	int	i;
+	int	index;
+	int	count;
+	int	sep;
 
-	if (!*str)
-		return (0);
-	i = 1;
-	while (*str)
+	count = 0;
+	sep = 0;
+	index = 0;
+	while (str[index])
 	{
-		if (*str == c)
-			i++;
-		str++;
+		if (str[index] != c && sep == 0)
+		{
+			sep = 1;
+			index++;
+		} else if (str[index] == c)
+			sep = 0;
+		index++;
 	}
-	return (i);
+	return (count);
 }
 
 static char	*ft_copy(const char *str, int start, int finish)
