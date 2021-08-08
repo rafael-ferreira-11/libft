@@ -1,81 +1,62 @@
 #include "libft.h"
 
-static	int	ft_count(const char *str, char c)
+static int	count_words(const char *str, char c)
 {
-	int	index;
-	int	count;
-	int	sep;
+	int i;
+	int trigger;
 
-	count = 0;
-	sep = 0;
-	index = 0;
-	while (str[index])
+	i = 0;
+	trigger = 0;
+	while (*str)
 	{
-		if (str[index] != c && sep == 0)
+		if (*str != c && trigger == 0)
 		{
-			sep = 1;
-			count++;
-			index++;
+			trigger = 1;
+			i++;
 		}
-		else if (str[index] == c)
-			sep = 0;
-		index++;
+		else if (*str == c)
+			trigger = 0;
+		str++;
 	}
-	return (count);
+	return (i);
 }
 
-static char	*ft_copy(const char *str, int start, int finish)
+static char	*word_dup(const char *str, int start, int finish)
 {
-	char	*ret;
-	int		index;
+	char	*word;
+	int		i;
 
-	index = 0;
-	ret = malloc((finish - start + 2));
+	i = 0;
+	word = malloc((finish - start) * sizeof(char));
 	while (start < finish)
-	{
-		ret[index] = str[start];
-		index++;
-		start++;
-	}
-	ret[index] = '\0';
-	return (ret);
+		word[i++] = str[start++];
+	word[i] = '\0';
+	return (word);
 }
 
-int	str_len(const char *s)
+char		**ft_split(char const *s, char c)
 {
-	int	length;
-
-	length = 0;
-	while (*(s++) != '\0')
-		length++;
-	return (length);
-}
-
-char	**ft_split(char const *s, char c)
-{
-	int		start;
+	size_t	i;
+	size_t	j;
 	int		index;
-	int		items;
-	char	**ret;
+	char	**split;
 
-	if (!s)
+	if (!s || !(split = malloc((count_words(s, c) + 1) * sizeof(char *))))
 		return (0);
-	ret = malloc((ft_count(s, c) + 1) * sizeof(char *));
-	if (!ret)
-		return (0);
+	i = 0;
+	j = 0;
 	index = -1;
-	items = 0;
-	start = -1;
-	while (++index <= str_len(s))
+	while (i <= ft_strlen(s))
 	{
-		if (s[index] != c && start < 0)
-			start = index;
-		else if ((s[index] == c || index == str_len(s)) && start >= 0)
+		if (s[i] != c && index < 0)
+			index = i;
+		else if ((s[i] == c || i == ft_strlen(s)) && index >= 0)
 		{
-			ret[items++] = ft_copy(s, start, index);
-			start = -1;
+			split[j++] = word_dup(s, index, i);
+			index = -1;
 		}
+		i++;
 	}
-	ret[items] = (void *)0;
-	return (ret);
+	split[j] = 0;
+	return (split);
 }
