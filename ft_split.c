@@ -62,6 +62,6 @@ char	**ft_split(char const *s, char c)
 			start = -1;
 		}
 	}
-	ret[items] = 0;
+	ret[items] = (void *)0;
 	return (ret);
 }
