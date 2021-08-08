@@ -30,7 +30,7 @@ static char	*ft_copy(const char *str, int start, int finish)
 	int		index;
 
 	index = 0;
-	ret = malloc((finish - start));
+	ret = malloc((finish - start + 2));
 	while (start < finish)
 	{
 		ret[index] = str[start];
