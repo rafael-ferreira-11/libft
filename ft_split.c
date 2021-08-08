@@ -6,7 +6,7 @@ static	int	ft_count(const char *str, char c)
 	int	count;
 	int	sep;
 
-	count = 1;
+	count = 0;
 	sep = 0;
 	index = 0;
 	while (str[index])
@@ -30,7 +30,7 @@ static char	*ft_copy(const char *str, int start, int finish)
 	int		index;
 
 	index = 0;
-	ret = malloc((finish - start + 1));
+	ret = malloc((finish - start));
 	while (start < finish)
 	{
 		ret[index] = str[start];
