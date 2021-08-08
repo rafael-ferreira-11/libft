@@ -1,62 +1,81 @@
 #include "libft.h"
 
-static int	count_words(const char *str, char c)
+static	int	ft_count(const char *str, char c)
 {
-	int i;
-	int trigger;
+	int	index;
+	int	count;
+	int	sep;
 
-	i = 0;
-	trigger = 0;
-	while (*str)
+	count = 0;
+	sep = 0;
+	index = 0;
+	while (str[index])
 	{
-		if (*str != c && trigger == 0)
+		if (str[index] != c && sep == 0)
 		{
-			trigger = 1;
-			i++;
+			sep = 1;
+			count++;
+			index++;
 		}
-		else if (*str == c)
-			trigger = 0;
-		str++;
+		else if (str[index] == c)
+			sep = 0;
+		index++;
 	}
-	return (i);
+	return (count);
 }
 
-static char	*word_dup(const char *str, int start, int finish)
+static char	*ft_copy(const char *str, int start, int finish)
 {
-	char	*word;
-	int		i;
-
-	i = 0;
-	word = malloc((finish - start) * sizeof(char));
-	while (start < finish)
-		word[i++] = str[start++];
-	word[i] = '\0';
-	return (word);
-}
-
-char		**ft_split(char const *s, char c)
-{
-	size_t	i;
-	size_t	j;
+	char	*ret;
 	int		index;
-	char	**split;
 
-	if (!s || !(split = malloc((count_words(s, c) + 1) * sizeof(char *))))
-		return (0);
-	i = 0;
-	j = 0;
-	index = -1;
-	while (i <= ft_strlen(s))
+	index = 0;
+	ret = malloc((finish - start ));
+	while (start < finish)
 	{
-		if (s[i] != c && index < 0)
-			index = i;
-		else if ((s[i] == c || i == ft_strlen(s)) && index >= 0)
-		{
-			split[j++] = word_dup(s, index, i);
-			index = -1;
-		}
-		i++;
+		ret[index] = str[start];
+		index++;
+		start++;
 	}
-	split[j] = 0;
-	return (split);
+	ret[index] = '\0';
+	return (ret);
+}
+
+int	str_len(const char *s)
+{
+	int	length;
+
+	length = 0;
+	while (*(s++) != '\0')
+		length++;
+	return (length);
+}
+
+char	**ft_split(char const *s, char c)
+{
+	int		start;
+	int		index;
+	int		items;
+	char	**ret;
+
+	if (!s)
+		return (0);
+	ret = malloc((ft_count(s, c) + 1) * sizeof(char *));
+	if (!ret)
+		return (0);
+	index = -1;
+	items = 0;
+	start = -1;
+	while (++index <= str_len(s))
+	{
+		if (s[index] != c && start < 0)
+			start = index;
+		else if ((s[index] == c || index == str_len(s)) && start >= 0)
+		{
+			ret[items++] = ft_copy(s, start, index);
+			start = -1;
+		}
+	}
+	ret[items] = (void *)0;
+	return (ret);
 }
