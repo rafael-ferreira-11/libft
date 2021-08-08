@@ -30,7 +30,7 @@ static char	*ft_copy(const char *str, int start, int finish)
 	int		index;
 
 	index = 0;
-	ret = malloc((finish - start ));
+	ret = malloc((finish - start));
 	while (start < finish)
 	{
 		ret[index] = str[start];
@@ -63,10 +63,10 @@ char	**ft_split(char const *s, char c)
 	ret = malloc((ft_count(s, c) + 1) * sizeof(char *));
 	if (!ret)
 		return (0);
-	index = -1;
+	index = 0;
 	items = 0;
 	start = -1;
-	while (++index <= str_len(s))
+	while (index <= str_len(s))
 	{
 		if (s[index] != c && start < 0)
 			start = index;
@@ -75,6 +75,7 @@ char	**ft_split(char const *s, char c)
 			ret[items++] = ft_copy(s, start, index);
 			start = -1;
 		}
+		index++;
 	}
 	ret[items] = (void *)0;
 	return (ret);
