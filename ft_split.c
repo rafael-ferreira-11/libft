@@ -2,25 +2,23 @@
 
 static	int	ft_count(const char *str, char c)
 {
-	int	index;
-	int	count;
-	int	sep;
+	int i;
+	int trigger;
 
-	count = 0;
-	sep = 0;
-	index = 0;
-	while (str[index])
+	i = 0;
+	trigger = 0;
+	while (*str)
 	{
-		if (str[index] != c && sep == 0)
+		if (*str != c && trigger == 0)
 		{
-			sep = 1;
-			count++;
-			index++;
-		} else if (str[index] == c)
-			sep = 0;
-		index++;
+			trigger = 1;
+			i++;
+		}
+		else if (*str == c)
+			trigger = 0;
+		str++;
 	}
-	return (count);
+	return (i);
 }
 
 static char	*ft_copy(const char *str, int start, int finish)
