@@ -14,6 +14,7 @@ static	int	ft_count(const char *str, char c)
 		if (str[index] != c && sep == 0)
 		{
 			sep = 1;
+			count++;
 			index++;
 		} else if (str[index] == c)
 			sep = 0;
