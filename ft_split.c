@@ -6,7 +6,7 @@ static	int	ft_count(const char *str, char c)
 	int	count;
 	int	sep;
 
-	count = 0;
+	count = 1;
 	sep = 0;
 	index = 0;
 	while (str[index])
