@@ -6,9 +6,11 @@
 /*   By: user42 <ferreira@asia.com>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/08 13:35:57 by user42            #+#    #+#             */
-/*   Updated: 2021/08/08 13:41:47 by user42           ###   ########.fr       */
+/*   Updated: 2021/08/09 16:46:59 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 static	int	ft_count(const char *str, char c)
 {
