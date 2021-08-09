@@ -7,7 +7,9 @@ DOT_C=		ft_atoi.c ft_bzero.c ft_calloc.c ft_isalnum.c ft_isalpha.c \
 			ft_strchr.c ft_strdup.c ft_striteri.c ft_strjoin.c ft_strlcat.c \
 			ft_strlcpy.c ft_strlen.c ft_strmapi.c ft_strncmp.c ft_strnstr.c \
 			ft_strrchr.c ft_strtrim.c ft_substr.c ft_tolower.c ft_toupper.c
-BONUS_C=	$(wildcard *_bonus.c)
+BONUS_C=	ft_lstadd_back_bonus.c   ft_lstdelone_bonus.c  ft_lstmap_bonus.c \
+			ft_lstadd_front_bonus.c  ft_lstiter_bonus.c    ft_lstnew_bonus.c \
+			ft_lstclear_bonus.c      ft_lstlast_bonus.c    ft_lstsize_bonus.c 
 OBJ=		$(DOT_C:.c=.o)
 BONUS_OBJ=	$(BONUS_C:.c=.o)
 CC = clang
@@ -21,12 +23,12 @@ RM = rm -rf
 all:		$(NAME)
 
 $(NAME): 	$(OBJ)
-	@ar -rv $(NAME) $(OBJ)
+	@ar -r $(NAME) $(OBJ)
 clean:
 	@$(RM) $(OBJ) $(BONUS_OBJ)
 fclean: 	clean
 	@$(RM) $(NAME)
 re:			fclean all
 bonus:		$(OBJ) $(BONUS_OBJ)
-	@ar -rv $(NAME) $(OBJ) $(BONUS_OBJ)
+	@ar -r $(NAME) $(OBJ) $(BONUS_OBJ)
 .PHONY:		all clean fclean re bonus
