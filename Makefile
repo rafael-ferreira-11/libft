@@ -17,18 +17,23 @@ FLAGS = -Wall -Wextra -Werror
 
 RM = rm -rf
 
-%.o :		%.c
-	@$(CC) $(FLAGS) -c $< -o $@ 
-
 all:		$(NAME)
 
 $(NAME): 	$(OBJ)
 	@ar -r $(NAME) $(OBJ)
+
 clean:
 	@$(RM) $(OBJ) $(BONUS_OBJ)
+
 fclean: 	clean
 	@$(RM) $(NAME)
+
 re:			fclean all
+
 bonus:		$(OBJ) $(BONUS_OBJ)
 	@ar -r $(NAME) $(OBJ) $(BONUS_OBJ)
+
+.c.o:
+	@$(CC) $(FLAGS) -c $< -o $@
+	
 .PHONY:		all clean fclean re bonus
